@@ -1,0 +1,3 @@
+username: superuser
+email: superuser@gmail.com
+password: valid123

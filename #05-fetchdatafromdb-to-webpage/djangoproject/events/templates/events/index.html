@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block additional_navbar %}
+<li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+</li>
+{% endblock additional_navbar %}
+
+{% block content %}
+<div class="row">
+
+    {% for event in event_list %}
+    <div class="col-lg-4">
+        <div class="card">
+            <h5 class="card-header">{{event.name}}</h5>
+            <div class="card-body">
+                <h5 class="card-title">{{event.event_date}}</h5>
+                <p class="card-text">{{event.description}}</p>
+                <h5 class="card-title">Manager</h5>
+                <p class="card-text">{{event.manager}}</p>
+                <h5 class="card-title">Venue</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{event.venue.name}}</li>
+                    <li class="list-group-item">{{event.venue.address}}</li>
+                    <li class="list-group-item">{{event.venue.web}}</li>
+                </ul>
+                <h5 class="card-title">Peserta</h5>
+                <ul class="list-group list-group-flush">
+
+                    {% for user in event.attendees.all %}
+                    <li class="list-group-item">{{user.first_name}} {{user.last_name}}</li>
+                    {% endfor %}
+
+
+                </ul>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock content %}
